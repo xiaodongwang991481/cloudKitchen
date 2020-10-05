@@ -1,0 +1,9 @@
+OrderGenerator.py genates order with given rate defined in -r parameter to stdout.
+It random select one order from orders.json and replace the id with a UUID.
+OrderPRocessor.py process the order, dispatch to a courier first, then cooked the order and add the order into the shelves.
+Before add the order into the related shelf, it discards all orders that the value is less than or equal to zero. Then try to add the order into the shelf. 
+If the shelf is full, try the add order to shelf procedure in overlfow shelf.
+When the courier picks the order up, it tries to find the order in related shelf and remove it. otherwise it tries to get the order from overflow shelf.
+
+The command to run the simulation:
+python3 OrderGenerator.py | python3 OrderProcessor.py
